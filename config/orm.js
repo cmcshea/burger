@@ -16,15 +16,15 @@ function printQuestionMarks(num) {
 
 //Helper function to convert object key/value pairs to SQL syntax
 
-function objToSql(ob) {
+function objToSql(object) {
     var arr = [];
 
     //Loop through the keys and push key/value as a string into arr
-    for (var key in ob) {
-        var value = ob[key];
+    for (var key in object) {
+        var value = object[key];
         //check to skip hidden properties
 
-        if (Object.hasOwnProperty.call(ob, key)) {
+        if (Object.hasOwnProperty.call(object, key)) {
             //if string has spaces, add quotations
 
             if (typeof value === "string" && value.indexOf(" ") >= 0) {
@@ -41,16 +41,16 @@ function objToSql(ob) {
 //Object for SQL statement functions
 
 var orm = {
-    selectAll: function(tableInput, cb) {
+    selectAll: function(tableInput, callBack) {
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function(err, result) {
             if (err) {
                 throw err;
             }
-            cb(result);
+            callBack(result);
         });
     },
-    insertOne: function(table, cols, vals, cb) {
+    insertOne: function(table, cols, vals, callBack) {
         var queryString = "INSERT INTO " + table;
 
         queryString += " (";
@@ -67,10 +67,10 @@ var orm = {
                 throw err;
             }
 
-            cb(result);
+            callBack(result);
         });
     },
-    updateOne: function(table, objColVals, condition, cb) {
+    updateOne: function(table, objColVals, condition, callBack) {
         var queryString = "UPDATE " + table;
 
         queryString += " SET ";
@@ -84,7 +84,7 @@ var orm = {
                 throw err;
             }
 
-            cb(result);
+            callBack(result);
         });
     }
 };
