@@ -1,6 +1,6 @@
 //Import MySQL Connection
 
-var connection = require("../config/connection.js");
+var connection = require("./connection.js");
 
 //Helper function for SQL syntax
 
@@ -19,22 +19,9 @@ function printQuestionMarks(num) {
 function objToSql(object) {
     var arr = [];
 
-    //Loop through the keys and push key/value as a string into arr
     for (var key in object) {
-        var value = object[key];
-        //check to skip hidden properties
-
-        if (Object.hasOwnProperty.call(object, key)) {
-            //if string has spaces, add quotations
-
-            if (typeof value === "string" && value.indexOf(" ") >= 0) {
-                value = "'" + value + "'";
-            }
-            arr.push(key + "=" + value);
-        }
+        arr.push(key + "=" + object[key]);
     }
-    //translate array of strings to single coma-seperated string
-
     return arr.toString();
 }
 
@@ -50,7 +37,7 @@ var orm = {
             callBack(result);
         });
     },
-    insertOne: function(table, cols, vals, callBack) {
+    createOne: function(table, cols, vals, callBack) {
         var queryString = "INSERT INTO " + table;
 
         queryString += " (";

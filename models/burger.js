@@ -8,17 +8,20 @@ var burger = {
             callBack(res);
         });
     },
-    insertOne: function(cols, vals, callBack) {
-        orm.insertOne("burgers", cols, vals, function(res) {
-            callBack(res);
-        });
-    },
-    updateOne: function(objColVals, condition, callBack) {
-        orm.updateOne("burgers", objColVals, condition, function(res) {
-            callBack(res);
-        });
-    }
-};
+    createOne: function(name, callBack) {
+        orm.createOne("burgers", [
+          "burger_name", "devoured"
+        ], [
+          name, false
+        ], callBack);
+      },
+      updateOne: function(burger, callBack) {
+        var condition = "id=" + burger.id;
+        orm.updateOne("burgers", {
+          devoured: burger.devoured
+        }, condition, callBack);
+      }
+}
 
 //Export the db functions for the controller
 

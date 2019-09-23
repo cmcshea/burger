@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Eat-da-burger</title>
+	<meta charset="UTF-8">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./assets/css/style.css" type="text/css" />
+</head>
+
+<body>
+	{{{ body }}}
+
+	{{!-- <ul id="burgers"></ul>
+
+	{{!-- Add in jQuery --}}
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+
+		$(document).ready(function () {
+			$.ajax({
+				method: "GET",
+				url: "/jq/burgers",
+			})
+				.then(function (response) {
+					console.log(response)
+					for (var i = 0; i < response.length; i++) {
+						var row = $("<li>")
+						var title = $("<div class='col-md-9 text-center'>")
+						var header = $("<span>").text(response[i].id + ". " + response[i].burger_name);
+						title.append(header);
+						row.append(title);
+						$("#burgers").append(row)
+
+					}
+				})
+
+
+		})
+
+
+
+	</script> --}}
+	<!--<script src="/assets/js/script.js"></script>-->
+</body>
+
+</html>

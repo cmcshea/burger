@@ -1,0 +1,15 @@
+<div class="row">
+
+    <div class="col-md-9 text-center">
+        <span>{{this.id}}. {{this.burger_name}}</span>
+        <!-- {{this.Date}} -->
+    </div>
+    <div class="col-md-3 text-center">
+        <form class="devour-form button-size" action="/burgers/change/{{this.id}}" method="POST">
+            <input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
+            <input type="hidden" value={{eaten}} name="devoured" />
+            <input type="submit" class="btn btn-default"
+                value="{{#if this.devoured}} ORDER MORE! {{else}} DEVOUR! {{/if}}">
+        </form>
+    </div>
+</div>
