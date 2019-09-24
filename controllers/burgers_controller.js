@@ -15,11 +15,6 @@ router.get("/burgers", function (req, res) {
         res.render("index", { burger_data: burgerData });
       });
 });
-// router.get("/jq/burgers", function (req, res) {
-//     burger.selectAll(function(burgerData) {
-//         res.json(burgerData)
-//       });
-// });
 
 router.post("/burgers/create", function(req, res) {
     burger.createOne(req.body.burger_name, function(result) {
